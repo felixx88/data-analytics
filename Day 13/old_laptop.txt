@@ -1,0 +1,3 @@
+brand: accer
+ram: 4gb
+os: windows

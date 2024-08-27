@@ -1,0 +1,4 @@
+model: mac m1
+ram: 16gb
+os: ios
+brand: apple
