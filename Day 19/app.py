@@ -10,21 +10,22 @@ pd.options.plotting.backend='plotly'
 
 @st.cache_data
 def load_database():
-    return pd.read_csv("Canada_clean.csv")
+    return pd.read_csv("../datasets/Canada_clean.csv")
 
 st.title("Canada Immigration Analysis")
 
 with st.spinner("Loading Data..."):
     df=load_database()
+    st.balloons()
     
 with st.expander("Show Dataset"):
     st.dataframe(df)
 
-countrylist=df['country']
+countrylist=df['Country']
 selected_country=st.selectbox("Select a Country",countrylist)
 min_yr,max_yr=st.slider("Select years",min_value=1980,max_value=2013,value=(1980,2013))
 st.header(f"Country: {selected_country}")
-df=df.set_index('country')
+df=df.set_index('Country')
 country=df.loc[selected_country,str(min_yr):str(max_yr)]
 fig=country.plot()
 st.plotly_chart(fig)
